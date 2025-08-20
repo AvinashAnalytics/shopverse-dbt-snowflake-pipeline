@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: customer_profit
+    description: Aggregated profit by customer.
+  - name: product_profit
+    description: Aggregated profit by product and category.
+  - name: country_profit_summary
+    description: Profit by country and region.
+  - name: payment_success_rate
+    description: Payment success rate by method.
+  - name: unpaid_orders_audit
+    description: Orders with no successful payment.

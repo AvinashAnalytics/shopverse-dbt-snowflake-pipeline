@@ -1,0 +1,5 @@
+
+
+SELECT
+   *
+FROM SHOPVERSE_ANALYTICS.BRONZE.bronze_customers

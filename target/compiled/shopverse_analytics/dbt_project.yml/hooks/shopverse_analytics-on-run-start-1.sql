@@ -1,0 +1,1 @@
+ALTER SESSION SET QUERY_TAG = 'dbt_run_production';

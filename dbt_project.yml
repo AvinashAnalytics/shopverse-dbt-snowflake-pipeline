@@ -1,0 +1,42 @@
+name: 'shopverse_analytics'
+version: '1.0.0'
+
+profile: 'shopverse_analytics'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+on-run-start:
+  - "{{ test() }}" 
+  - "ALTER SESSION SET QUERY_TAG = 'dbt_run_production';" 
+
+seeds:
+  shopverse_analytics:  
+    country:
+      delimiter: ","
+      +schema: silver
+
+models:
+  shopverse_analytics:
+    +materialized: view
+    +post-hook: "{{ log_model_run(this.name) }}"
+    bronze:
+       +schema: bronze
+       +materialized: table
+    silver:
+      +materialized: view 
+      +schema: silver
+    gold:
+      materialized: table 
+      +schema: gold
+    intermediate:
+      +materialized: ephemeral 
+      +schema: intermediate

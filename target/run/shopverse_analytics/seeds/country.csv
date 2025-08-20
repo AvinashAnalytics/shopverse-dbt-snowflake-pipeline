@@ -1,0 +1,14 @@
+
+    
+    
+    
+    create table shopverse_analytics.silver.country (country text,region text)
+  ;
+    -- dbt seed --
+    
+            insert into shopverse_analytics.silver.country (country, region) values
+            (%s,%s),(%s,%s),(%s,%s),(%s,%s),(%s,%s)
+        
+
+;
+  

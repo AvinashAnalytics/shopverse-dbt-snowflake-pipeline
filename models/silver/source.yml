@@ -1,0 +1,35 @@
+version: 2
+
+sources:
+  - name: shopverse_raw
+    database: SHOPVERSE_ANALYTICS
+    schema: BRONZE 
+    tables:
+      - name: bronze_orders
+        columns:
+          - name: order_id
+            description: Primary key for orders
+            tests:
+              - unique
+              - not_null
+      - name: bronze_customers
+        columns:
+          - name: customer_id
+            description: Primary key for customers
+            tests:
+              - unique
+              - not_null
+      - name: bronze_products
+        columns:
+          - name: product_id
+            description: Primary key for products
+            tests:
+              - unique
+              - not_null
+      - name: bronze_payments
+        columns:
+          - name: payment_id 
+            description: Primary key for payments
+            tests:
+              - unique
+              - not_null
